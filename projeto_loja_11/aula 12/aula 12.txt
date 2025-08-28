@@ -1,0 +1,17 @@
+Tabela Users
+
+
+Tabela Perfil
+
+    #USERS(usuario)
+    foto
+    email
+    cpf
+    tel_fixo
+    tel_celular
+    dt_nascimento
+    genero
+    desafio_pergunta
+    desafio_resposta
+
+  
