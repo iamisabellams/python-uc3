@@ -1,0 +1,60 @@
+{% extends 'estoque/base.html' %}
+
+{% block title %}Estoque - Loja de Eletronicos{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }} 
+
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Nossos Produtos Listados</h1>
+    <a href="{% url 'estoque:produto_create' %}" class="btn btn-success">Adicionar Novo Produto</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col" style="width: 10%;">Imagem</th>
+                        <th scope="col">Nome do Produto</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col" class="text-end">Preço</th>
+                        <th scope="col" class="text-center">Estoque</th>
+                        <th scope="col" class="text-center">Status</th>
+                        <th scope="col" class="text-center" style="width: 15%;">Edição</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for produto in produtos %}
+
+                    <tr class="align-middle">
+                        <td>
+                            <img scr="{{produto.imagem.url}}"
+                            class="img-thumbnail"
+                            style="width: 80px;
+                            height: 80px;
+                            object-fit: cover;">
+                        </td>
+                        <td>{{produto.nome}}</td>
+                        <td>{{produto.categoria}}</td>
+                        <td>{{produto.preco}}</td>
+                        <td>{{produto.estoque}}</td>
+                        <td>{{produto.status}}</td>
+                        <td> View | Edit | Delete </td>
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            Nenhum produto cadastrado ainda.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+{% endblock %}
