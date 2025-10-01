@@ -89,18 +89,51 @@ class ProdutoDeleteView(DeleteView):
     success_url = reverse_lazy('estoque:produto_list')
     context_object_name = 'produto'
 
-# CATEGORIA
+# CATEGORIA LIST
 class CategoriaListView(ListView):
     model = Categoria
     template_name = 'estoque/categoria/categoria_list.html'
     context_object_name = 'categorias'  # Nome da variável a ser usada no template
     ordering = ['identificacao']  # Opcional: ordena os produtos por nome
 
+# UPDATE CATEGORIA
+class CategoriaUpdateView(UpdateView):
+    model = Categoria
+    template_name = 'estoque/categoria/categoria_update.html'
+    fields = ['identificacao', 'descricao']
+    success_url = reverse_lazy('estoque:categoria_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['view_title'] = 'Editar Categoria'
+        return context
+
+# DELETE CATEGORIA
+class CategoriaDeleteView(DeleteView):
+    model = Produto
+    template_name = 'estoque/categoria/categoria_confirm_delete.html'
+    success_url = reverse_lazy('estoque:categoria_list')
+    context_object_name = 'categoria'
+
 # READ (Detail) CATEGORIA
 class CategoriaDetailView(DetailView):
     model = Categoria
-    template_name = ''
+    template_name = 'estoque/categoria/categoria_detail.html'
     context_object_name = 'categorias'
+
+# TAG LIST
+class TagListView(ListView):
+    model = Protuto_Tag
+    template_name = 'estoque/tag/tag_list.html'
+    context_object_name = 'tags'  # Nome da variável a ser usada no template
+    ordering = ['identificacao', 'descricao']  # Opcional: ordena os produtos por nome
+
+# READ (Detail) TAGS
+class TagDetailView(DetailView):
+    model = Protuto_Tag
+    template_name = 'estoque/tag/tag_detail.html'
+    context_object_name = 'tag'
+
 
 # CREATE CATEGORIA
 # class CategoriaCreateView(CreateView):

@@ -1,0 +1,26 @@
+{% extends 'estoque/base.html' %}
+
+{% block title %}Estoque - Loja de Eletronicos{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }} 
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>{{ categoria.nome }}</h1>
+        <p class="lead">{{ categoria.descricao }}</p>
+        <hr>
+        <p><strong>Categoria:</strong>
+            <h1>{{ categoria.nome }}</h1>
+            {{ categoria.identificacao|default:"N/A" }}</p>
+        <hr>
+        <a href="{% url 'estoque:categoria_detail' categorias.pk %}" class="btn btn-warning">Editar Categoria</a>
+        <a href="{% url 'estoque:categoria_list' %}" class="btn btn-secondary">Voltar para a Lista</a>
+    </div>
+</div>
+
+{% endblock %}
