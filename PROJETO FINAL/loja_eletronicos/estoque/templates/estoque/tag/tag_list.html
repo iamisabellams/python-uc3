@@ -8,6 +8,10 @@
 {% endblock %}
 
 {% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Nossos Produtos</h1>
+    <a href="{% url 'estoque:produto_create' %}" class="btn btn-success">Adicionar Novo Produto</a>
+</div>
 
 <div class="card">
     <div class="card-body">

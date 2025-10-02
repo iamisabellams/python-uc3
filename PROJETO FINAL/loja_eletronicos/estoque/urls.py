@@ -26,6 +26,7 @@ urlpatterns = [
     path('categorias/<int:pk>/', views.CategoriaDetailView.as_view(), name='categoria_detail'),
     path('categorias/<int:pk>/editar/', views.CategoriaUpdateView.as_view(), name='categoria_update'),
     path('categoria/<int:pk>/deletar/', views.CategoriaDeleteView.as_view(), name='categoria_delete'),
+    # path('categoria/<int:pk>/criar/', views.CategoriaCreateView.as_view(), name='categoria_create'),
 
     path('tags/', views.TagListView.as_view(), name='tag_list'), #dashboard
     path('tags/<int:pk>/', views.TagDetailView.as_view(), name='tag_detail'),

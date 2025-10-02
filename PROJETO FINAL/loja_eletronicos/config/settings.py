@@ -26,6 +26,12 @@ INSTALLED_APPS = [
     #app para forms
     'widget_tweaks',
     
+    'crispy_forms'
+    #'crispy_bootstrap4'
+    'crispy_bootstrap5'
+    'crispy_bootstrap'
+    
+
     #meu apps
     'blog',
     'estoque',
@@ -92,6 +98,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+#CRISPY_ALLWOED_TEMPLATE_PACKS 
 
 
 # Internationalization
