@@ -99,7 +99,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#CRISPY_ALLWOED_TEMPLATE_PACKS 
+#CRISPY_ALLWOED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 # Internationalization
