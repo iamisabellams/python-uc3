@@ -1,0 +1,28 @@
+{% extends 'estoque/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Editar Tag - Estoque
+    {% else %}
+        Nova Tag - Estoque
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<h1>
+    {% if form.instance.pk %}
+        Editar Tag
+    {% else %}
+        Nova Tag
+    {% endif %}
+</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="{% url 'estoque:tag_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

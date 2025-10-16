@@ -1,0 +1,17 @@
+{% extends 'estoque/base.html' %}
+
+{% block title %}
+    Confirmar exclusão da categoria - Estoque
+{% endblock %}
+
+{% block content %}
+<h1>Excluir Categoria</h1>
+
+<p>Tem certeza que deseja excluir a categoria: <strong>{{ object }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Sim, excluir</button>
+    <a href="{% url 'estoque:categoria_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

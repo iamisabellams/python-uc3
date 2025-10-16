@@ -1,0 +1,18 @@
+{% extends 'estoque/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Editar Categoria - Estoque
+{% endblock %}
+
+{% block content %}
+<h1>Editar Categoria</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="{% url 'estoque:tag_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
