@@ -18,6 +18,9 @@ def teste(request):
     # A função render 'junta' o template com os dados e retorna uma resposta HTTP.
     return render(request, 'estoque/index_static.html', context)
 
+def home(request):
+    melhores_produtos = Produto.objects.filter(disponivel=True)[:3]  # top 3 produtos
+    return render(request, 'estoque/home.html', {'melhores_produtos': melhores_produtos})
 
 def index(request):
     """
@@ -168,20 +171,20 @@ class TagUpdateView(UpdateView):
         return context
 
 
-# CREATE CATEGORIA
-# class CategoriaCreateView(CreateView):
-#     model = Categoria
-#     template_name = ''
-#     # Lista dos campos que o usuário poderá preencher
-#     fields = ['identificacao', 'descricao', 'Ações']
-#     # URL para onde o usuário será redirecionado após o sucesso
-#     success_url = reverse_lazy('')
+# #CREATE CATEGORIA
+class CategoriaCreateView(CreateView):
+    model = Categoria
+    template_name = 'estoque/categoria/categoria_form.html'
+    # Lista dos campos que o usuário poderá preencher
+    fields = ['identificacao', 'descricao']
+    # URL para onde o usuário será redirecionado após o sucesso
+    success_url = reverse_lazy('estoque:categoria_form')
 
-#     # Adiciona um título dinâmico ao contexto do template
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['view_title'] = 'Categoria'
-#         return context
+    # Adiciona um título dinâmico ao contexto do template
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['view_title'] = 'Categoria'
+        return context
 
 # # UPDATE CATEGORIA
 # class CategoriaUpdateView(UpdateView):

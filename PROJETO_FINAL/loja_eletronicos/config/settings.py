@@ -133,6 +133,17 @@ STATIC_ROOT = BASE_DIR / 'staticfiles' # Mais uma vez, usando o operador /
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+## Sistema de Autenticacao
+LOGIN_URL = '/accounts/login/'  # URL para redirecionamento quando login é necessário
+
+# Para onde redirecionar após login bem-sucedido
+#LOGIN_REDIRECT_URL = '/'  
+LOGIN_REDIRECT_URL = '/estoque/'  
+
+ # Para onde redirecionar após logout
+#LOGOUT_REDIRECT_URL = '/' 
+LOGOUT_REDIRECT_URL = '/estoque/' 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 

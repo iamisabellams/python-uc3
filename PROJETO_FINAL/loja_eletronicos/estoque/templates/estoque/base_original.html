@@ -75,20 +75,28 @@
                         </a>
                     </li>
                 </ul>
-                <span class="navbar-text me-3"> | </span>
-
-                {% if user.is_authenticated %}
-                <span class="navbar-text me-3">
-                    Olá, {{ user.username }}
-                </span>
-
-                <form method="post" action="{% url 'logout' %}" class="d-flex">
-                    {% csrf_token %}
-                    <button class="btn btn-outline-danger btn-sm" type="submit">Logout</button>
-                </form>
-                {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">Login</a>
-                {% endif %}
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'site_loja:perfil' %}">Perfil ({{ user.username }})</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                                {% csrf_token %} {# ESSENCIAL para segurança #}
+                                <button type="submit" 
+                                    class="nav-link btn btn-link" 
+                                    >
+                                    Sair
+                                </button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{#% url 'login' %#}"></i>
+                                <i class="btn btn-outline-primary">Entrar</i> 
+                        </li>                    
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </nav>

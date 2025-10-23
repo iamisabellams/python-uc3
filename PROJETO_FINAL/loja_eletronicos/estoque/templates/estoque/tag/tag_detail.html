@@ -1,26 +1,93 @@
 {% extends 'estoque/base.html' %}
 
-{% block title %}Estoque - Loja de Eletronicos{% endblock %}
+{% block title %}Detalhes da Tag - Loja de Eletrônicos{% endblock %}
 
 {% block extra_css %}
-    {{ block.super }} 
+{{ block.super }}
+<style>
+    /* Cabeçalho */
+    .tag-header {
+        background: linear-gradient(135deg, #6f42c1, #b23cff);
+        color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
 
+    .tag-header h1 {
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Card de conteúdo */
+    .tag-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .tag-card h2 {
+        font-weight: 600;
+        color: #6f42c1;
+    }
+
+    .tag-card p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+
+    /* Botões */
+    .btn {
+        border-radius: 25px;
+        font-weight: 500;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #212529;
+    }
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+    }
+
+    .btn-secondary:hover {
+        background-color: #6c757d;
+    }
+
+    .btn i {
+        margin-right: 0.3rem;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-
-<div class="row">
-    <div class="col-md-6">
-        <h1>{{ tag.nome }}</h1>
-        <p class="lead">{{ tag.descricao }}</p>
-        <hr>
-        <p><strong>Tag:</strong>
-            <h1>{{ tag.nome }}</h1>
-
-        <hr>
-        <a href="{% url 'estoque:tag_update' tag.pk %}" class="btn btn-warning">Editar Tag</a>
-        <a href="{% url 'estoque:tag_list' %}" class="btn btn-secondary">Voltar para a Lista</a>
-    </div>
+<div class="tag-header">
+    <h1>Detalhes da Tag</h1>
+    <p class="lead mb-0">Veja as informações completas da tag selecionada</p>
 </div>
 
+<div class="tag-card">
+    <h2>{{ tag.identificacao }}</h2>
+    <hr>
+    <p><strong>Descrição:</strong></p>
+    <p>{{ tag.descricao|default:"Sem descrição disponível." }}</p>
+
+    <hr class="my-4">
+    <div class="d-flex justify-content-end gap-2">
+        <a href="{% url 'estoque:tag_update' tag.pk %}" class="btn btn-warning">
+            <i class="bi bi-pencil"></i> Editar Tag
+        </a>
+        <a href="{% url 'estoque:tag_list' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Voltar à Lista
+        </a>
+    </div>
+</div>
 {% endblock %}

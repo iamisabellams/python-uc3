@@ -8,6 +8,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('site-admin/', admin.site.urls),
     path('estoque/', include('estoque.urls')),
+    # accounts/login/
+    # accounts/logout/
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:

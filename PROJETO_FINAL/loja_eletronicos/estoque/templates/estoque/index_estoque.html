@@ -1,22 +1,73 @@
 {% extends 'estoque/base.html' %}
-
 {% block title %}Página Inicial - Minha Loja{% endblock %}
-
 {% block extra_css %}
-    {{ block.super }} 
-
+{{ block.super }}
+<style>
+.product-card {
+    transition: all 0.3s ease !important;
+    margin-bottom: 1rem !important;
+}
+.card-title {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+}
+.card-text {
+    font-size: 2rem !important;
+    line-height: 1.8 !important;
+    transition: transform 0.3s ease; box-shadow 0.3s ease;
+}
+.card-text:hover {
+    transform: translateY (-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+.btn-primary {
+    padding: 1rem 2rem !important;
+    font-size: 1.2rem !important;
+    transition: all 0.3s ease !important;
+}
+</style>
 {% endblock %}
-
 {% block content %}
-    <div class="jumbotron text-center bg-light p-5 rounded">
-        <h1 class="display-4">Bem-vindo à gestão de estoque</h1>
-        <p class="lead">Os melhores produtos, são gerenciados aqui.</p>
-        <hr class="my-4">
-        <p>Gerencie os produtos oferecidos aos seus clientes</p>
-        <a class="btn btn-primary btn-lg" 
-            href="#" 
-            role="button">
-            Ver Produtos
-        </a>
+<div class="container mt-5">
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <div class="jumbotron text-center bg-light p-5 rounded">
+                <h1 class="display-7">Bem-vindo à gestão de estoque</h1>
+                <p class="lead">Os melhores produtos, são gerenciados aqui.</p>
+                <hr class="my-4">
+                <div class="product-card card border-light shadow-sm rounded mb-4">
+                    <div class="card-body text-center py-5">
+                        <h3 class="card-title mb-3">Nossos Produtos</h3>
+                        <p class="card-text">
+                            Oferecemos uma seleção cuidadosamente curada de produtos de alta qualidade,
+                            garantindo a máxima satisfação dos nossos clientes.
+                            Cada item é rigorosamente testado e selecionado para atender aos padrões mais elevados.
+                        </p>
+                        <a class="btn btn-primary btn-lg"
+                        href="{% url 'estoque:produto_tabela_list' %}"
+                        role="button">
+                         Ver Produtos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <div class="jumbotron text-center bg-light p-5 rounded">
+                    <div class="product-card card border-light shadow-sm rounded mb-4">
+                        <div class="card-body text-center py-5">
+                            <h3 class="card-title mb-3">Sobre Nossa Plataforma</h3>
+                            <p class="card-text">
+                                Desenvolvemos esta plataforma pensando em você e suas necessidades de gestão de estoque.
+                            Com ferramentas modernas e uma interface intuitiva, nossa solução torna o gerenciamento
+                            dos seus produtos mais eficiente e organizado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}
